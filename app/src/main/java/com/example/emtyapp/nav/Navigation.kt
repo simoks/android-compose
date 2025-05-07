@@ -17,6 +17,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.emtyapp.ui.product.ProductViewModel
+import com.example.emtyapp.ui.product.component.DetailsScreen
+import com.example.emtyapp.ui.product.screens.HomeScreen
 
 object Routes {
     const val Home = "home"
@@ -24,13 +27,13 @@ object Routes {
 }
 
 @Composable
-fun AppNavigation() {
+fun AppNavigation(viewModel: ProductViewModel) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = Routes.Home) {
 
         composable(Routes.Home) {
-            HomeScreen(onNavigateToDetails = { productId ->
+            HomeScreen(viewModel, onNavigateToDetails = { productId ->
                 navController.navigate("${Routes.ProductDetails}/$productId")
             })
         }
@@ -45,8 +48,9 @@ fun AppNavigation() {
     }
 }
 
+ /* Deprecated */
 @Composable
-fun HomeScreen(onNavigateToDetails: (String) -> Unit) {
+fun HomeScreenDeprecated(onNavigateToDetails: (String) -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -59,20 +63,5 @@ fun HomeScreen(onNavigateToDetails: (String) -> Unit) {
         Button(onClick = { onNavigateToDetails("PR1234") }) {
             Text(text = "Aller aux détails du produit PR1234")
         }
-    }
-}
-
-@Composable
-fun DetailsScreen(productId: String) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(text = "Bienvenue sur DetailsScreen")
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(text = "Produit ID: $productId")
     }
 }
