@@ -2,8 +2,9 @@ package com.example.emtyapp.data.Repository
 
 import com.example.emtyapp.data.Entities.Product
 import kotlinx.coroutines.delay
+import javax.inject.Inject
 
-class ProductRepository {
+class ProductRepository @Inject constructor() {
     suspend fun getProducts(): List<Product> {
         // Simulate fetching data from a remote server or database
         delay(2000)

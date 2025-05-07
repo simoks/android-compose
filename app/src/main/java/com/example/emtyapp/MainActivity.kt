@@ -45,8 +45,10 @@ import com.example.emtyapp.nav.AppNavigation
 import com.example.emtyapp.nav.Routes
 import com.example.emtyapp.ui.product.ProductViewModel
 import com.example.emtyapp.ui.theme.EmtyAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val viewModel:ProductViewModel by viewModels<ProductViewModel>()
