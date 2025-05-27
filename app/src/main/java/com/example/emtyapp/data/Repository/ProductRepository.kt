@@ -1,8 +1,10 @@
 package com.example.emtyapp.data.Repository
 
+import android.util.Log
 import com.example.emtyapp.data.Api.ProductApi
 import com.example.emtyapp.data.Entities.Product
 import kotlinx.coroutines.delay
+import java.io.Console
 import javax.inject.Inject
 
 class ProductRepository @Inject constructor(
@@ -10,6 +12,8 @@ class ProductRepository @Inject constructor(
 ) {
     suspend fun getProducts(): List<Product> {
         // fetch data from a remote server
-        return api.getProducts()
+        val products = api.getProducts()
+        Log.d("products repo", "size :"+ products.size)
+        return products
     }
 }
