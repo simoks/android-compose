@@ -7,11 +7,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.emtyapp.data.Entities.Product
+import com.example.emtyapp.data.Entities.ProductEntity
 
 
 @Composable
-fun ProductsList(products: List<Product>, onNavigateToDetails: (String) -> Unit) {
+fun ProductsList(products: List<ProductEntity>, onNavigateToDetails: (String) -> Unit) {
     LazyColumn (
         modifier = Modifier
             .fillMaxSize()
